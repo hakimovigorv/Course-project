@@ -16,7 +16,7 @@ import com.example.courseproject.payload.response.MessageResponse;
 import com.example.courseproject.repository.RoleRepository;
 import com.example.courseproject.repository.UserRepository;
 import com.example.courseproject.security.jwt.JwtUtils;
-import com.example.courseproject.security.sevices.UserDetailsImpl;
+import com.example.courseproject.security.services.UserDetailsImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;

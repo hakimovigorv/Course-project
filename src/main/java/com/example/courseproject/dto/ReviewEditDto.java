@@ -1,7 +1,6 @@
 package com.example.courseproject.dto;
 
 import lombok.Data;
-
 import java.util.Set;
 
 @Data
@@ -12,13 +11,15 @@ public class ReviewEditDto {
     private String full_text;
     private Set<String> imageUrls;
     private Set<String> tags;
+    private Double authorScore;
 
-    public ReviewEditDto(Long id, String title, String category, String full_text, Set<String> imageUrls, Set<String> tags) {
+    public ReviewEditDto(Long id, String title, String category, String full_text, Set<String> imageUrls, Set<String> tags, Double authorScore) {
         this.id = id;
         this.title = title;
         this.category = category;
         this.full_text = full_text;
         this.imageUrls = imageUrls;
         this.tags = tags;
+        this.authorScore = authorScore;
     }
 }

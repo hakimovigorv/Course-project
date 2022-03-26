@@ -27,10 +27,6 @@ public interface ReviewMapper {
 
     Set<Image> imageUrlsToImages(Set<String> imageUrls);
 
-    @Mapping(target = "authorName", source = "review.user.username")
-    @Mapping(target = "authorImgUrl", source = "review.user.imageUrl")
-    HomeReviewDto reviewToHomeReviewDto(Review review);
-
     default String imageToImageUrl(Image image) {
         return image.getUrl();
     }

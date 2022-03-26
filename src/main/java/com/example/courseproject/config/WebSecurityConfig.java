@@ -2,7 +2,7 @@ package com.example.courseproject.config;
 
 import com.example.courseproject.security.jwt.AuthEntryPointJwt;
 import com.example.courseproject.security.jwt.AuthTokenFilter;
-import com.example.courseproject.security.sevices.UserDetailsServiceImpl;
+import com.example.courseproject.security.services.UserDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -58,7 +58,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
                 .authorizeRequests().antMatchers("/auth/**", "/oauth2/**", "/login/**").permitAll()
-                .antMatchers("/test/**", "/review/**", "/user/**", "/tag/**", "/category/**" , "/rating/**").permitAll()
+                .antMatchers("/test/**", "/review/**", "/user/**", "/tag/**", "/category/**" , "/rating/**", "/comment-websocket/**", "/comment/**").permitAll()
                 .anyRequest().authenticated();
         http.addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);
     }

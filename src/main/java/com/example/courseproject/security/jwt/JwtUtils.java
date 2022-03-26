@@ -2,7 +2,7 @@ package com.example.courseproject.security.jwt;
 
 import java.util.Date;
 
-import com.example.courseproject.security.sevices.UserDetailsImpl;
+import com.example.courseproject.security.services.UserDetailsImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;

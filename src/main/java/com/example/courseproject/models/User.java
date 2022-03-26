@@ -54,6 +54,9 @@ public class User {
     @OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE)
     private Set<Score> scores;
 
+    @OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE)
+    private Set<Comment> comments;
+
     private Integer rating = 0;
 
     public User() {

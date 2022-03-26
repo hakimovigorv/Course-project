@@ -1,4 +1,4 @@
-package com.example.courseproject.security.sevices;
+package com.example.courseproject.security.services;
 
 import com.example.courseproject.models.User;
 import com.example.courseproject.repository.UserRepository;

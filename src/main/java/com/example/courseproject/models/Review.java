@@ -6,7 +6,6 @@ import org.hibernate.annotations.Type;
 import org.hibernate.search.annotations.Field;
 import org.hibernate.search.annotations.Indexed;
 import org.hibernate.search.annotations.IndexedEmbedded;
-
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import java.sql.Timestamp;
@@ -37,7 +36,7 @@ public class Review {
     private Double userScore = 0d;
     private Integer likeCount = 0;
 
-    private Timestamp releaseDate = null;
+    private Timestamp releaseDate;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
@@ -58,6 +57,9 @@ public class Review {
 
     @OneToMany(mappedBy="review", cascade = { CascadeType.REMOVE })
     private Set<Score> scores;
+
+    @OneToMany(mappedBy = "review", cascade = CascadeType.REMOVE)
+    private Set<Comment> comments;
 
     public Review() {
     }
