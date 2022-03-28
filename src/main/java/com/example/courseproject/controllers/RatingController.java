@@ -3,7 +3,7 @@ package com.example.courseproject.controllers;
 import com.example.courseproject.dto.LikeDto;
 import com.example.courseproject.dto.ScoreDto;
 import com.example.courseproject.mappers.RatingMapper;
-import com.example.courseproject.payload.response.MessageResponse;
+import com.example.courseproject.security.payload.response.MessageResponse;
 import com.example.courseproject.services.RatingService;
 import com.example.courseproject.services.ReviewService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
-import java.security.Principal;
+import javax.validation.Valid;
 
 @CrossOrigin
 @RestController
@@ -30,6 +30,7 @@ public class RatingController {
 
     @GetMapping("/user-score")
     public Float getUserScore(@RequestParam Long reviewId, @RequestParam Long userId) {
+        Float example = ratingService.getUserScore(reviewId, userId).getScore();
         return ratingService.getUserScore(reviewId, userId).getScore();
     }
 
@@ -40,7 +41,7 @@ public class RatingController {
 
     @PostMapping("/like")
     @PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
-    public ResponseEntity<?> likeReview(@RequestBody LikeDto likeDto) {
+    public ResponseEntity<?> likeReview(@Valid @RequestBody LikeDto likeDto) {
         String message = ratingService.likeReview(ratingMapper.likeDtoToLike(likeDto));
         reviewService.updateLikeCount(likeDto.getReviewId());
         return ResponseEntity.ok(new MessageResponse(message));
@@ -48,7 +49,7 @@ public class RatingController {
 
     @PostMapping("/rate")
     @PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
-    public ResponseEntity<?> rateReviewSubject(@RequestBody ScoreDto scoreDto) {
+    public ResponseEntity<?> rateReviewSubject(@Valid @RequestBody ScoreDto scoreDto) {
         String message = ratingService.scoreReviewSubject(ratingMapper.scoreDtoToScore(scoreDto));
         reviewService.updateAvgScore(scoreDto.getReviewId());
         return ResponseEntity.ok(new MessageResponse(message));

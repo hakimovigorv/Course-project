@@ -1,4 +1,4 @@
-package com.example.courseproject.payload.response;
+package com.example.courseproject.security.payload.response;
 
 import java.util.List;
 

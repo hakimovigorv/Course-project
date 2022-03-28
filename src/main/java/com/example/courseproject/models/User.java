@@ -54,10 +54,10 @@ public class User {
     @OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE)
     private Set<Score> scores;
 
+    private Integer rating = 0;
+
     @OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE)
     private Set<Comment> comments;
-
-    private Integer rating = 0;
 
     public User() {
     }

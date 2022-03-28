@@ -46,7 +46,7 @@ public class UserService {
                 .map(Role::getName).collect(Collectors.toSet()).contains(ERole.ROLE_ADMIN);
     }
 
-    public String blockUsers (List <Long> ids) {
+    public String blockUsers(List<Long> ids) {
         List<User> blockedUsers = new ArrayList<>();
         for (Long id : ids) {
             User user = findUserById(id);
@@ -57,7 +57,7 @@ public class UserService {
         return "Successfully!";
     }
 
-    public String unblockUsers (List <Long> ids) {
+    public String unblockUsers(List<Long> ids) {
         List<User> unblockedUsers = new ArrayList<>();
         for (Long id : ids) {
             User user = findUserById(id);
@@ -68,7 +68,7 @@ public class UserService {
         return "Successfully!";
     }
 
-    public String deleteUsers (List <Long> ids) {
+    public String deleteUsers(List<Long> ids) {
         List<User> deletedUsers = new ArrayList<>();
         for (Long id : ids) {
             User user = findUserById(id);
@@ -78,7 +78,7 @@ public class UserService {
         return "Successfully!";
     }
 
-    public String makeAdminUsers (List <Long> ids) {
+    public String makeAdminUsers(List<Long> ids) {
         List<User> madeAdminUsers = new ArrayList<>();
         for (Long id : ids) {
             User user = findUserById(id);

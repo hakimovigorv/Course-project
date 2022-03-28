@@ -6,6 +6,7 @@ import org.hibernate.annotations.Type;
 import org.hibernate.search.annotations.Field;
 import org.hibernate.search.annotations.Indexed;
 import org.hibernate.search.annotations.IndexedEmbedded;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import java.sql.Timestamp;
@@ -42,20 +43,20 @@ public class Review {
     @JoinColumn(name = "user_id")
     private User user;
 
-    @OneToMany(mappedBy="review", cascade = { CascadeType.REMOVE })
+    @OneToMany(mappedBy = "review", cascade = {CascadeType.REMOVE})
     private Set<Image> images;
 
     @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(	name = "review_tags",
+    @JoinTable(name = "review_tags",
             joinColumns = @JoinColumn(name = "review_id"),
             inverseJoinColumns = @JoinColumn(name = "tag_id"))
     @IndexedEmbedded
     private Set<Tag> tags;
 
-    @OneToMany(mappedBy="review", cascade = { CascadeType.REMOVE })
+    @OneToMany(mappedBy = "review", cascade = {CascadeType.REMOVE})
     private Set<Like> likes;
 
-    @OneToMany(mappedBy="review", cascade = { CascadeType.REMOVE })
+    @OneToMany(mappedBy = "review", cascade = {CascadeType.REMOVE})
     private Set<Score> scores;
 
     @OneToMany(mappedBy = "review", cascade = CascadeType.REMOVE)
